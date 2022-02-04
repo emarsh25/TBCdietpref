@@ -698,7 +698,7 @@ p50g25y
 ```
 
 ### Build the plot
-```{r fig1plot, exercise=F, warning = F, message = F, exercise.timelimit = 10000}
+```{r fig1plot, exercise=F, warning = F, message = F, eval = F, exercise.timelimit = 10000}
 
 pyaxis <- ggplot(pd3e, aes(x = abc2.x, xend=abc2.x, y=c(rep(0.5,length(table(list(abc2.x))))), yend=mean, col = abc2.x)) + 
   geom_blank() + 
@@ -1345,7 +1345,7 @@ p50g25y
 ```
 
 ### Build the plot
-```{r fig1plot2, exercise=F, warning = F, message = F, eval = T, exercise.timelimit = 10000}
+```{r fig1plot2, exercise=F, warning = F, message = F, eval = F, exercise.timelimit = 10000}
 
 pyaxis <- ggplot(pd3e, aes(x = abc2.x, xend=abc2.x, y=c(rep(0.5,length(table(list(abc2.x))))), yend=mean, col = abc2.x)) + 
   geom_blank() + 
@@ -1445,7 +1445,7 @@ sd_50g25y
 ```
 
 ### Build the plot
-```{r fig1plot3, exercise=F, warning = F, message = F, eval = T, exercise.timelimit = 10000}
+```{r fig1plot3, exercise=F, warning = F, message = F, eval = F, exercise.timelimit = 10000}
 
 GET("http://github.com/johnchaston/TBCdietPref/blob/master/files/DataInExcelFormat%20100.100%20vs%20100.00%20+Date.xls?raw=true", write_disk(tf <- tempfile(fileext = ".xls")))
 
