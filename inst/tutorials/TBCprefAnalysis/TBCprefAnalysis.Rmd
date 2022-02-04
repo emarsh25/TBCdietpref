@@ -10,7 +10,7 @@ runtime: shiny_prerendered
 
 rm(list=ls())
 
-library(learnr)
+
 library(readxl)
 library(dplyr)
 library(RCurl)
