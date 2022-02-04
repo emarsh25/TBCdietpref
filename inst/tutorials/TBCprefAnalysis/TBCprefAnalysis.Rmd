@@ -2488,7 +2488,7 @@ ggplot(df2, aes(x=treatment, y = mnglu)) +
 ```{r figs3, exercise=T, warning = F, message = F, eval = T, exercise.timelimit = 10000}
 
 ## read in your file here, need to change the filepath
-traits <- read_xlsx('~/Dropbox/mec15344-sup-0002-DatasetsS1-S14.xlsx', sheet = "Dataset S7", skip = 2, na = "NA")
+# traits <- read_xlsx('~/Dropbox/mec15344-sup-0002-DatasetsS1-S14.xlsx', sheet = "Dataset S7", skip = 2, na = "NA")
   ## get pref data
 pd3e <- read.csv(url('https://raw.githubusercontent.com/johnchaston/TBCdietPref/master/files/fig2-pd3e.csv'))
 
