@@ -24,6 +24,10 @@ library(tidyr)
 library(dunn.test)
 library(rcompanion)
 library(gridExtra)
+library(devtools)
+library(usethis)
+library(roxygen2)
+library(learnr)
 
  ## function to combine data from multiple files for glucose and protein analysis
 combine_files <- function(filepath1, sheet1, sheet1b, filepath2, sheet2, filepath3, sheet3) {
