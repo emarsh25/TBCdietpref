@@ -10,7 +10,7 @@ runtime: shiny_prerendered
 
 rm(list=ls())
 
-library(learnr)
+#library(learnr)
 library(readxl)
 library(dplyr)
 library(RCurl)
@@ -24,10 +24,6 @@ library(tidyr)
 library(dunn.test)
 library(rcompanion)
 library(gridExtra)
-library(devtools)
-library(usethis)
-library(roxygen2)
-library(learnr)
 
  ## function to combine data from multiple files for glucose and protein analysis
 combine_files <- function(filepath1, sheet1, sheet1b, filepath2, sheet2, filepath3, sheet3) {
@@ -2488,7 +2484,7 @@ ggplot(df2, aes(x=treatment, y = mnglu)) +
 ```
 
 
-## Figure S8
+### Figure SB
 ```{r figs3, exercise=T, warning = F, message = F, eval = T, exercise.timelimit = 10000}
 
 ## read in your file here, need to change the filepath
