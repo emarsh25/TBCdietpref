@@ -1,0 +1,17 @@
+Package: TBCdietpref
+Title: Shows all code used to create figures in paper
+Version: 1.0
+Authors@R: 
+    person(given = "John",
+           family = "Chaston",
+           role = c("aut", "cre"),
+           email = "john_chaston@byu.edu")
+Description: Package does...
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Suggests: 
+    learnr
