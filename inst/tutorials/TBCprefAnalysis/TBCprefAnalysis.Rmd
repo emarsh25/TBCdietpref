@@ -158,3 +158,65 @@ out_df <- data.frame(trt=character(), pref=numeric(),day=numeric(),time=numeric(
 
 
 ```
+
+## Figure S1 {.tabset}
+
+### plot 100g100y
+```{r fig1100g100y, warning = F, message = F, eval = T, exercise.timelimit = 10000}
+
+GET("http://github.com/johnchaston/TBCdietPref/blob/master/files/DataInExcelFormat%20100.100%20vs%20100.00%20+Date.xls?raw=true", write_disk(tf <- tempfile(fileext = ".xls")))
+
+aaa <- read_xls(tf, sheet = "NumberOfSips")
+abb <- read_xls(tf, sheet = "Date")
+aab <- read_xls(tf, sheet = "Date")
+ccc <- aaa
+
+out_df <- data.frame(trt=character(), pref=numeric(),day=numeric(),time=numeric(),dieta=character(),dietb=character())
+j=3
+for(i in 1:j) {
+	lacto_pref <- (ccc[,i]/(ccc[,(j+i)]+ccc[,i]))
+	lp2 <- cbind(lacto_pref,abb[,(i)], aab[,i],aaa[,i],aaa[,(j+i)])
+	lp3 <- lp2[(!is.na(lp2[,1]) & lp2[,1]!=-1),]
+	lp4 <- data.frame(lp3) %>% mutate(trt=paste0(colnames(ccc[i]),"_",colnames(ccc[i+j])), pref=lp3[,1], day=lp3[,2], time=lp3[,3],dieta=lp3[,4],dietb=lp3[,5]) %>% dplyr::select(trt,pref,day,dieta,dietb)
+	out_df <- rbind(out_df,lp4)
+}
+
+pref_data <- out_df %>% 
+	mutate(trt=gsub(pattern = " 10Y10G", replacement = "",x = trt,perl = T)) %>% 
+	mutate(trt=gsub(pattern = " 10Y7.5G", replacement = "",x = trt,perl = T)) %>%
+	mutate(trt=factor(trt)) %>%
+	filter(dieta<1000 & dietb<1000) %>%
+	droplevels()
+
+pd2 <- pref_data
+
+pd2$day2 <- as.factor(as.character(pd2$day))
+pd2$trt <- as.factor(as.character(pd2$trt))
+
+abc <- glmer(cbind(dieta,dietb) ~ trt + (1|day2), data=pd2, family = "binomial")
+cat("Statistics summary")
+summary(abc)
+abc1 <- glht(abc, mcp(trt='Tukey'))
+abc2 <- cld(abc1)
+pd3e <- data.frame(abc2$lp, abc2$x) %>% group_by(abc2.x) %>% dplyr::summarize(mean = mean(abc2.lp), sem=sd(abc2.lp)/sqrt(sum(abc2.lp<2)))
+colors2 <- c("gray","red","blue")
+
+pd3e$abc2.x <- plyr::revalue(pd3e$abc2.x, c("aceto 100g_aceto 100" = "At","axenic 100g_axenic 100" = "Ax","lacto 100g_lacto 100" = "Lb"))
+
+pd3e$abc2.x <- factor(pd3e$abc2.x, levels = c("Ax","At","Lb"))
+
+plot_text_size = 3
+p100g100y <- ggplot(pd3e, aes(x = abc2.x, xend=abc2.x, y=c(rep(0.5,length(table(list(abc2.x))))), yend=mean, col = abc2.x)) + 
+	geom_segment(stat="identity",size=plot_text_size*1.75) + 
+  scale_color_manual(values = colors2) +
+	scale_fill_manual(name="Legend",values=colors2) +
+	scale_y_continuous(limits = c(0,1))+
+	theme_cowplot() + 
+	theme(text = element_text(size=plot_text_size), axis.title = element_blank(), axis.text = element_blank(), legend.position = "none", axis.ticks = element_blank(), axis.line = element_line(size = 0.2)) +
+	geom_errorbar(col = "black", ymax =pd3e$mean+pd3e$sem, ymin = pd3e$mean-pd3e$sem, width=0.25, size=.25) +
+	geom_hline(yintercept = 0.5, linetype="dashed") +
+ 	geom_text(aes(label=c("a","b","c"), y=.75), size=plot_text_size) + coord_flip()
+p100g100y
+#ggsave(h=2,w=3.5,"100G100Y.png")
+
+```
