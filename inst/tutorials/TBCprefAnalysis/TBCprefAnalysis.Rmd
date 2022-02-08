@@ -2164,7 +2164,7 @@ x=.6
 
 ```
 
-## Figure S5B sip duration
+### Figure S5B sip duration
 ```{r figs5b, exercise=T, warning = F, message = F, eval = T, fig.width = 5, exercise.timelimit = 10000}
 
 GET("https://github.com/johnchaston/TBCdietPref/blob/master/files/DataInExcelFormat-all%20together%20with%20dayandtime.xls?raw=true", write_disk(tf <- tempfile(fileext = ".xls")))
