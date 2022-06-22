@@ -1,9 +1,8 @@
 ---
 title: "TBC Diet Preference Analysis Figures"
-output: learnr::tutorial
-pdf_document: default
-html_document: default
-runtime: shiny_prerendered
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include = F, warning = F, message = F}
