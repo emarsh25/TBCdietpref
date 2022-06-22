@@ -3,6 +3,7 @@ title: "TBC Diet Preference Analysis Figures"
 output:
   pdf_document: default
   html_document: default
+runtime: shiny_prerendered
 ---
 
 ```{r setup, include = F, warning = F, message = F}
