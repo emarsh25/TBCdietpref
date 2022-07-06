@@ -4,8 +4,7 @@ output: learnr::tutorial
 runtime: shiny_prerendered
 ---
 
-# Start {.tabset}
-## Setup {.tabset}
+## Setup
 ```{r setup, include = F, warning = F, message = F}
 # usethis::create_package('~/Dropbox/Dietary Pref 2019/TBCdietPref/TBCdietPrefv2')
 
@@ -343,7 +342,7 @@ out_df <- data.frame(trt=character(), pref=numeric(),day=numeric(),time=numeric(
 
 ```
 
-## Figure 1 {.tabset}
+## Figure 1 
 
 ### Figure S1 {.tabset}
 
@@ -2010,7 +2009,7 @@ dev.off()
 
 ```
 
-## Figure 2 {.tabset}
+## Figure 2 
 ### Figure 2
 ```{r Fig2, exercise=T, warning = F, message = F, eval = T, exercise.timelimit = 1000000,fig.height=10, fig.width=3.5}
 
