@@ -347,7 +347,7 @@ out_df <- data.frame(trt=character(), pref=numeric(),day=numeric(),time=numeric(
 ### Figure S1 {.tabset}
 
 #### plot 100g100y
-```{r fig1100g100y, warning = F, message = F, eval = T, exercise.timelimit = 10000}
+```{r fig1100g100y, exercise = T, warning = F, message = F, eval = T, exercise.timelimit = 10000}
 
 GET("http://github.com/johnchaston/TBCdietPref/blob/master/files/DataInExcelFormat%20100.100%20vs%20100.00%20+Date.xls?raw=true", write_disk(tf <- tempfile(fileext = ".xls")))
 
@@ -941,9 +941,8 @@ dev.off()
 ```
 
 ### Figure S2A total sips ok {.tabset}
-
 #### plot 100g100y
-```{r fig1100g100y2, warning = F, message = F, eval = T, exercise.timelimit = 10000}
+```{r fig1100g100y2, exercise=T, warning = F, message = F, eval = T, exercise.timelimit = 10000}
 
 GET("http://github.com/johnchaston/TBCdietPref/blob/master/files/DataInExcelFormat%20100.100%20vs%20100.00%20+Date.xls?raw=true", write_disk(tf <- tempfile(fileext = ".xls")))
 
@@ -1588,7 +1587,8 @@ dev.off()
 
 
 ### Figure S2B sip duration {.tabset}
-```{r, warning = F, message = F, eval = T, exercise.timelimit = 10000}
+#### Figure code
+```{r figs2b, exercise=T, warning = F, message = F, eval = T, exercise.timelimit = 10000}
 
 # plot 100g100y
 sd_100g100y <- calc_feeding_time_stats("http://github.com/johnchaston/TBCdietPref/blob/master/files/DataInExcelFormat%20100.100%20vs%20100.00%20+Date.xls?raw=true")
@@ -1725,7 +1725,8 @@ dev.off()
 ```
 
 ### Figure S2C sip distribution {.tabset}
-```{r, warning = F, message = F, eval = T, exercise.timelimit = 10000}
+#### Figure code
+```{r figs2c, exercise = T, warning = F, message = F, eval = T, exercise.timelimit = 10000}
 
 # plot 100g100y
 sd_100g100y <- calc_sip_stats("http://github.com/johnchaston/TBCdietPref/blob/master/files/DataInExcelFormat%20100.100%20vs%20100.00%20+Date.xls?raw=true")
@@ -1862,7 +1863,8 @@ dev.off()
 ```
 
 ### Figure S2C sip distribution - against axenic {.tabset}
-```{r, warning = F, message = F, eval = T, exercise.timelimit = 10000}
+#### Figure code
+```{r figs2cpart2, exercise=T, warning = F, message = F, eval = T, exercise.timelimit = 10000}
 
 # plot 100g100y
 calc_sip_stats_axenic("http://github.com/johnchaston/TBCdietPref/blob/master/files/DataInExcelFormat%20100.100%20vs%20100.00%20+Date.xls?raw=true", fileadd = "100g100y", append_val = F)
